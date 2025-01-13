@@ -1,0 +1,160 @@
+<section
+    class="relative bg-gradient-to-r from-cyan-500/10 to-blue-500/10 py-20 px-10 md:px-40 flex flex-col justify-between md:flex-row items-center gap-10"
+>
+    <!-- Gambar Anatomi -->
+    <div
+        class="relative grid place-items-center min-w-[320px] max-w-full animate__animated animate__fadeInLeft"
+    >
+        <img src="/anatomiManusia.png" class="min-w-[320px] lg:ms-40 pt-10" />
+        <div
+            data-tooltip-target="ususBesar"
+            data-tooltip-style="light"
+            class="bg-white size-2 rounded-full absolute top-[16.5rem] right-[9.5rem]"
+        >
+        </div>
+        <div
+            id="ususBesar"
+            role="tooltip"
+            class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip"
+        >
+            Usus Besar
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+
+        <div
+            data-tooltip-target="pankreas"
+            data-tooltip-style="light"
+            class="bg-white size-2 rounded-full absolute top-[14rem] right-[11rem]"
+        >
+        </div>
+        <div
+            id="pankreas"
+            role="tooltip"
+            class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip"
+        >
+            Pankreas
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+
+        <div
+            data-tooltip-target="lambung"
+            data-tooltip-style="light"
+            class="bg-white size-2 rounded-full absolute top-[15rem] right-[8.5rem]"
+        >
+        </div>
+        <div
+            id="lambung"
+            role="tooltip"
+            class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip"
+        >
+            Lambung
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+
+        <div
+            data-tooltip-target="kerongkongan"
+            data-tooltip-style="light"
+            class="bg-white size-2 rounded-full absolute top-[11rem] right-[9.7rem]"
+        >
+        </div>
+        <div
+            id="kerongkongan"
+            role="tooltip"
+            class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip"
+        >
+            Kerongkongan
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+
+        <div
+            data-tooltip-target="Mulut"
+            data-tooltip-style="light"
+            class="bg-white size-2 rounded-full absolute top-[7rem] right-[10rem]"
+        >
+        </div>
+        <div
+            id="Mulut"
+            role="tooltip"
+            class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip"
+        >
+            Mulut
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+    </div>
+
+    <!-- Kolom Penjelasan Anatomi -->
+    <div class="w-full md:w-1/2 animate__animated animate__fadeInRight">
+        <h2 class="text-4xl font-bold text-yellow-300">Anatomi Manusia</h2>
+        <p class="text-lg mt-4">
+            Anatomi manusia adalah studi tentang struktur tubuh manusia dan
+            fungsinya. Mulai dari sistem kerangka, otot, organ internal, hingga
+            sistem saraf, anatomi membantu kita memahami bagaimana tubuh bekerja
+            secara keseluruhan.
+        </p>
+        <ul class="mt-6 list-disc list-inside space-y-2">
+            <li>
+                <span class="font-bold text-yellow-300">Sistem Kerangka:</span> Memberikan
+                struktur dan melindungi organ vital.
+            </li>
+            <li>
+                <span class="font-bold text-yellow-300">Sistem Otot:</span> Menggerakkan
+                tubuh dan mendukung postur.
+            </li>
+            <li>
+                <span class="font-bold text-yellow-300">Organ Internal:</span> Mengatur
+                fungsi vital seperti pernapasan dan pencernaan.
+            </li>
+            <li>
+                <span class="font-bold text-yellow-300">Sistem Saraf:</span> Mengontrol
+                respons tubuh dan transmisi sinyal.
+            </li>
+        </ul>
+    </div>
+</section>
+<script>
+    const correctAnswers = {
+        q1: "A", // Jawaban untuk pertanyaan 1
+        q2: "B", // Jawaban untuk pertanyaan 2
+    };
+
+    const submitBtn = document.getElementById("submit-btn");
+    const playAgainBtn = document.getElementById("play-again-btn");
+    const resultContainer = document.getElementById("result-container");
+    const scoreSpan = document.getElementById("score");
+    const quizContainer = document.getElementById("quiz-container");
+
+    // Tombol Submit
+    submitBtn.addEventListener("click", () => {
+        let score = 0;
+
+        // Cek jawaban
+        Object.keys(correctAnswers).forEach((question) => {
+            const selectedAnswer = document.querySelector(
+                `input[name="${question}"]:checked`,
+            );
+            if (
+                selectedAnswer &&
+                selectedAnswer.value === correctAnswers[question]
+            ) {
+                score++;
+            }
+        });
+
+        // Tampilkan skor
+        scoreSpan.textContent = score;
+        resultContainer.classList.remove("hidden");
+        quizContainer.classList.add("hidden");
+        submitBtn.classList.add("hidden");
+    });
+
+    // Tombol Play Again
+    playAgainBtn.addEventListener("click", () => {
+        // Reset kuis
+        quizContainer.classList.remove("hidden");
+        submitBtn.classList.remove("hidden");
+        resultContainer.classList.add("hidden");
+        document
+            .querySelectorAll("input[type=radio]")
+            .forEach((input) => (input.checked = false));
+    });
+</script>

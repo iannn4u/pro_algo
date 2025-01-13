@@ -1,0 +1,48 @@
+<section
+  class="relative h-screen font-semibold flex flex-wrap justify-between items-center max-md:p-5 max-md:py-10 px-40"
+>
+  <!-- Gambar Background dengan Parallax -->
+  <div
+    class="absolute inset-0 bg-[url('/pattern.png')] bg-cover bg-center z-10"
+    data-parallax
+    style="filter: brightness(0.6); opacity: 0.8;"
+  >
+  </div>
+
+  <!-- Konten Utama -->
+  <div class="md:w-[45%] z-20 relative animate__animated animate__fadeIn">
+    <h1 class="text-5xl max-md:text-center max-sm:text-3xl">
+      Mengenal <span class="text-yellow-400">Anatomi</span> Lebih Dalam
+    </h1>
+    <p class="text-xl max-md:text-center mt-3 font-normal max-sm:text-base">
+      Jelajahi keajaiban anatomi manusia dan hewan dari kepala hingga ujung
+      kaki.
+    </p>
+    <a
+      href="#"
+      class="text-xl pb-3 bg-cyan-500/80 px-5 py-2 rounded-full mt-10 block w-max mx-auto max-md:text-base hover:bg-cyan-500/40 duration-300 hover:text-white/60"
+      >Mulai Eksplorasi</a
+    >
+  </div>
+
+  <!-- Gambar Tambahan -->
+  <img
+    src="/jumbotron.png"
+    class="max-w-[35rem] w-full relative z-20 animate__animated animate__fadeIn"
+    alt="Jumbotron"
+  />
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const parallax = document.querySelector("[data-parallax]");
+    const scrollPosition = window.scrollY;
+    parallax.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+  });
+
+  document.addEventListener("scroll", () => {
+    const parallax = document.querySelector("[data-parallax]");
+    const scrollPosition = window.scrollY;
+    parallax.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+  });
+</script>
