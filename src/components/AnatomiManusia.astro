@@ -1,15 +1,17 @@
-<section id="anatomi"
+<section
+    id="anatomi"
     class="relative bg-gradient-to-r from-cyan-500/10 to-blue-500/10 py-20 px-10 md:px-40 flex flex-col justify-between md:flex-row items-center gap-10"
 >
     <!-- Gambar Anatomi -->
     <div
-        class="relative grid place-items-center min-w-[320px] max-w-full animate__animated animate__fadeInLeft"
+        class="relative grid place-items-center w-full md:w-[45%] animate__animated animate__fadeInLeft"
     >
-        <img src="/anatomiManusia.png" class="min-w-[320px] lg:ms-40 pt-10" />
+        <img src="/anatomiManusia.png" class="w-full pt-10" />
+        <!-- Tooltip untuk Usus Besar -->
         <div
+            class="bg-white size-2 rounded-full absolute top-[24.5rem] right-[15rem]"
             data-tooltip-target="ususBesar"
             data-tooltip-style="light"
-            class="bg-white size-2 rounded-full absolute top-[16.5rem] right-[9.5rem]"
         >
         </div>
         <div
@@ -21,25 +23,27 @@
             <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
 
+        <!-- Tooltip untuk Pankreas -->
         <div
-            data-tooltip-target="pankreas"
+            class="bg-white size-2 rounded-full absolute top-[20rem] right-[17rem]"
+            data-tooltip-target="Hati Manusia"
             data-tooltip-style="light"
-            class="bg-white size-2 rounded-full absolute top-[14rem] right-[11rem]"
         >
         </div>
         <div
-            id="pankreas"
+            id="Hati Manusia"
             role="tooltip"
             class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip"
         >
-            Pankreas
+            Hati
             <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
 
+        <!-- Tooltip untuk Lambung -->
         <div
+            class="bg-white size-2 rounded-full absolute top-[21rem] right-[13rem]"
             data-tooltip-target="lambung"
             data-tooltip-style="light"
-            class="bg-white size-2 rounded-full absolute top-[15rem] right-[8.5rem]"
         >
         </div>
         <div
@@ -51,10 +55,11 @@
             <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
 
+        <!-- Tooltip untuk Kerongkongan -->
         <div
+            class="bg-white size-2 rounded-full absolute top-[14rem] right-[15.2rem]"
             data-tooltip-target="kerongkongan"
             data-tooltip-style="light"
-            class="bg-white size-2 rounded-full absolute top-[11rem] right-[9.7rem]"
         >
         </div>
         <div
@@ -66,10 +71,11 @@
             <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
 
+        <!-- Tooltip untuk Mulut -->
         <div
+            class="bg-white size-2 rounded-full absolute top-[9.5rem] right-[17rem]"
             data-tooltip-target="Mulut"
             data-tooltip-style="light"
-            class="bg-white size-2 rounded-full absolute top-[7rem] right-[10rem]"
         >
         </div>
         <div
@@ -111,50 +117,3 @@
         </ul>
     </div>
 </section>
-<script>
-    const correctAnswers = {
-        q1: "A", // Jawaban untuk pertanyaan 1
-        q2: "B", // Jawaban untuk pertanyaan 2
-    };
-
-    const submitBtn = document.getElementById("submit-btn");
-    const playAgainBtn = document.getElementById("play-again-btn");
-    const resultContainer = document.getElementById("result-container");
-    const scoreSpan = document.getElementById("score");
-    const quizContainer = document.getElementById("quiz-container");
-
-    // Tombol Submit
-    submitBtn.addEventListener("click", () => {
-        let score = 0;
-
-        // Cek jawaban
-        Object.keys(correctAnswers).forEach((question) => {
-            const selectedAnswer = document.querySelector(
-                `input[name="${question}"]:checked`,
-            );
-            if (
-                selectedAnswer &&
-                selectedAnswer.value === correctAnswers[question]
-            ) {
-                score++;
-            }
-        });
-
-        // Tampilkan skor
-        scoreSpan.textContent = score;
-        resultContainer.classList.remove("hidden");
-        quizContainer.classList.add("hidden");
-        submitBtn.classList.add("hidden");
-    });
-
-    // Tombol Play Again
-    playAgainBtn.addEventListener("click", () => {
-        // Reset kuis
-        quizContainer.classList.remove("hidden");
-        submitBtn.classList.remove("hidden");
-        resultContainer.classList.add("hidden");
-        document
-            .querySelectorAll("input[type=radio]")
-            .forEach((input) => (input.checked = false));
-    });
-</script>
